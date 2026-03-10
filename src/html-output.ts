@@ -77,9 +77,9 @@ const generateHTML = (countries: ProcessedCountry[]): string => {
       border-bottom: 1px solid #eee;
     }
 
-    tr.odd { background: #fafafa; }
-    tr.even { background: #fff; }
-    tr:hover { background: #f0ede8; }
+    tbody tr.odd { background: #fafafa; }
+    tbody tr.even { background: #fff; }
+    tbody tr:hover { background: #f0ede8; }
   </style>
 </head>
 <body>

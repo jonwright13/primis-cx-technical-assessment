@@ -79,6 +79,8 @@ const mapCountry = (country: Country): ProcessedCountry => {
  * @param countries - Array of raw country objects from the API
  * @returns Sorted array of processed country objects
  */
-export const processCountryData = (countries: Country[]) => {
+export const processCountryData = (
+  countries: Country[],
+): ProcessedCountry[] => {
   return countries.map(mapCountry).sort((a, b) => a.name.localeCompare(b.name));
 };

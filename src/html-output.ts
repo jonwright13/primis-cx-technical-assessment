@@ -2,6 +2,12 @@ import { writeFile, mkdir } from "fs/promises";
 
 import type { ProcessedCountry } from "./types";
 
+/**
+ * Generates an HTML table row for a single country. (AI-generated)
+ * @param country - Processed country object
+ * @param index - Row index used to apply alternating row colours
+ * @returns HTML string for a single table row
+ */
 const generateRow = (country: ProcessedCountry, index: number): string => {
   // AI-generated
   return `
@@ -15,10 +21,20 @@ const generateRow = (country: ProcessedCountry, index: number): string => {
     </tr>`;
 };
 
+/**
+ * Generates all HTML table rows for an array of countries.
+ * @param countries - Array of processed country objects
+ * @returns HTML string of all table rows
+ */
 const generateRows = (countries: ProcessedCountry[]): string => {
   return countries.map(generateRow).join("");
 };
 
+/**
+ * Generates a full HTML page with a styled table of European countries. (AI-generated)
+ * @param countries - Array of processed country objects
+ * @returns Complete HTML document as a string
+ */
 const generateHTML = (countries: ProcessedCountry[]): string => {
   const timestamp = new Date().toLocaleString("en-GB");
 
@@ -105,6 +121,11 @@ const generateHTML = (countries: ProcessedCountry[]): string => {
 </html>`;
 };
 
+/**
+ * Writes the generated HTML page to output/countries.html. (AI-generated)
+ * Creates the output directory if it does not exist.
+ * @param countries - Array of processed country objects
+ */
 export const writeToHTML = async (
   countries: ProcessedCountry[],
 ): Promise<void> => {

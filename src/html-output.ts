@@ -129,11 +129,17 @@ const generateHTML = (countries: ProcessedCountry[]): string => {
 export const writeToHTML = async (
   countries: ProcessedCountry[],
 ): Promise<void> => {
-  const html = generateHTML(countries);
+  try {
+    const html = generateHTML(countries);
 
-  //   Generate an output directory if one doesn't exist
-  await mkdir("output", { recursive: true });
+    //   Generate an output directory if one doesn't exist
+    await mkdir("output", { recursive: true });
 
-  //   Write to the html file
-  await writeFile("output/countries.html", html, "utf-8");
+    //   Write to the html file
+    await writeFile("output/countries.html", html, "utf-8");
+  } catch (e) {
+    const message = e instanceof Error ? e.message : String(e);
+    console.error(`Error writing CSV: ${message}`);
+    process.exit(1);
+  }
 };

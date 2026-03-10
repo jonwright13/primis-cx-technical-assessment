@@ -38,12 +38,18 @@ export const writeToCSV = async (
     process.exit(1);
   }
 
-  const header = Object.keys(first).filter((k) => k !== "flag");
-  const rows = countries.map(toCSVRows).join("\n");
+  try {
+    const header = Object.keys(first).filter((k) => k !== "flag");
+    const rows = countries.map(toCSVRows).join("\n");
 
-  const csv = `${header}\n${rows}`;
+    const csv = `${header}\n${rows}`;
 
-  await mkdir("output", { recursive: true });
+    await mkdir("output", { recursive: true });
 
-  await writeFile("output/countries.csv", csv, "utf-8");
+    await writeFile("output/countries.csv", csv, "utf-8");
+  } catch (e) {
+    const message = e instanceof Error ? e.message : String(e);
+    console.error(`Error writing CSV: ${message}`);
+    process.exit(1);
+  }
 };

@@ -15,12 +15,21 @@ const main = async (): Promise<void> => {
   //   Process the country data
   const processedCountries = processCountryData(countries);
 
-  //   Generate HTML and write to output file
-  await writeToHTML(processedCountries);
+  try {
+    //   Generate HTML and write to output file
+    await writeToHTML(processedCountries);
 
-  await writeToCSV(processedCountries);
+    //   Write to CSV
+    await writeToCSV(processedCountries);
 
-  console.log(processedCountries);
+    console.log(
+      `Fetched ${processedCountries.length} countries. Files written to /output`,
+    );
+    process.exit(0);
+  } catch (e) {
+    console.error("Error exporting data", e);
+    process.exit(1);
+  }
 };
 
 main();

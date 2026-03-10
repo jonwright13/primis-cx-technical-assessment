@@ -3,6 +3,11 @@ import type { Country } from "./types";
 const BASE_URL = "https://restcountries.com/v3.1";
 const ENDPOINT = "/region/europe";
 
+/**
+ * Fetches all European countries from the REST Countries API
+ * @returns  Array of raw country objects from the API
+ *
+ */
 export const fetchData = async (): Promise<Country[]> => {
   try {
     const response = await fetch(`${BASE_URL}${ENDPOINT}`);

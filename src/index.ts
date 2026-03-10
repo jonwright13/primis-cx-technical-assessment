@@ -1,4 +1,5 @@
 import { fetchData } from "./api.ts";
+import { writeToHTML } from "./html-output.ts";
 import { processCountryData } from "./processing.ts";
 
 const main = async (): Promise<void> => {
@@ -6,9 +7,11 @@ const main = async (): Promise<void> => {
   const countries = await fetchData();
 
   //   Process the country data
-  const processed = processCountryData(countries);
+  const processedCountries = processCountryData(countries);
 
-  console.log(processed);
+  await writeToHTML(processedCountries);
+
+  console.log(processedCountries);
 };
 
 main();

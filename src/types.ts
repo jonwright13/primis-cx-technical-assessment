@@ -6,7 +6,7 @@ export interface Country {
   };
   capital?: string[];
   population: number;
-  languages?: Record<string, string>;
+  languages: Record<string, string>;
   currencies?: Record<string, { name: string; symbol: string }>;
   flags: {
     png: string;
@@ -14,4 +14,13 @@ export interface Country {
     alt?: string;
   };
   subregion?: string;
+}
+
+export interface ProcessedCountry {
+  name: string;
+  capital: string;
+  population: string;
+  languages: string;
+  currency: string;
+  flag: string;
 }

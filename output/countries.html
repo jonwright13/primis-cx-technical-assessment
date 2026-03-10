@@ -56,11 +56,20 @@
     tbody tr.odd { background: #fafafa; }
     tbody tr.even { background: #fff; }
     tbody tr:hover { background: #f0ede8; }
+
+    input {
+    margin-bottom: 1rem; 
+    padding: 0.5rem 1rem; 
+    width: 300px; 
+    font-size: 0.9rem; 
+    border: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
   <h1>European Countries</h1>
-  <p class="timestamp">Generated: 10/03/2026, 16:13:03</p>
+  <p class="timestamp">Generated: 10/03/2026, 16:30:06</p>
+  <input type="text" id="search" placeholder="Search countries..." />
   <table>
     <thead>
       <tr>
@@ -500,5 +509,34 @@
     </tr>
     </tbody>
   </table>
+  <script>
+  // Script for sorting table columns (AI-generated)
+    document.querySelectorAll('th').forEach((th, index) => {
+    th.style.cursor = 'pointer';
+    th.addEventListener('click', () => {
+      const tbody = document.querySelector('tbody');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+      const ascending = th.dataset.order !== 'asc';
+      
+      rows.sort((a, b) => {
+        const aText = a.cells[index].textContent.trim();
+        const bText = b.cells[index].textContent.trim();
+        return ascending ? aText.localeCompare(bText) : bText.localeCompare(aText);
+      });
+
+      th.dataset.order = ascending ? 'asc' : 'desc';
+      rows.forEach(row => tbody.appendChild(row));
+    });
+  });
+
+  // Script for searching and filtering rows
+  document.getElementById('search').addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    document.querySelectorAll('tbody tr').forEach(row => {
+      const text = row.textContent.toLowerCase();
+      row.style.display = text.includes(query) ? '' : 'none';
+    });
+  });
+  </script>
 </body>
 </html>

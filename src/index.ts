@@ -3,6 +3,10 @@ import { writeToCSV } from "./csv-output.ts";
 import { writeToHTML } from "./html-output.ts";
 import { processCountryData } from "./processing.ts";
 
+/**
+ * Handles all steps of the script to fetch country data from the endpoint, process the countries into a meaning format, and then exports the data to CSV and HTML before exiting
+ * @return void
+ */
 const main = async (): Promise<void> => {
   // Fetch data from the REST Countries API endpoint
   const countries = await fetchData();

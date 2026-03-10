@@ -48,6 +48,7 @@ const generateHTML = (countries: ProcessedCountry[]): string => {
     .timestamp {
       font-size: 0.85rem;
       color: #888;
+      margin-top: 0.5rem;
       margin-bottom: 1.5rem;
     }
 

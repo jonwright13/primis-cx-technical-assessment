@@ -31,6 +31,8 @@ node index.js
 
 Both files are written to the '/output' directory, which is created automatically if it doesn't exist.
 
+<!-- AI-Generated -->
+
 | File             | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | `countries.html` | Styled HTML table with flag images and a generated timestamp |
